@@ -17,13 +17,13 @@ $this->params['breadcrumbs'][] = $this->title;
         'summary'=>'Showing {begin}-{end} of {totalCount}.',
         'columns' => [
             'id',
-            'jobCode',
+            'job_code',
             'status',
             'messages:ntext',
-            'dateCreated',
-            'dateScheduled',
-            'dateExecuted',
-            'dateFinished',
+            'date_created',
+            'date_scheduled',
+            'date_executed',
+            'date_finished',
         ],
     ]); ?>
 

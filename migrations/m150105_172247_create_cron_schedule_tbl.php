@@ -13,16 +13,16 @@ class m150105_172247_create_cron_schedule_tbl extends Migration
         }
 
         $this->createTable(
-            '{{%CronSchedule}}',
+            '{{%cron_schedule}}',
             [
                 'id' => Schema::TYPE_PK,
-                'jobCode' => Schema::TYPE_STRING . '(255) NULL DEFAULT NULL',
+                'job_code' => Schema::TYPE_STRING . '(255) NULL DEFAULT NULL',
                 'status' => Schema::TYPE_STRING . '(255) NULL DEFAULT NULL',
                 'messages' => Schema::TYPE_TEXT . ' NULL',
-                'dateCreated' => Schema::TYPE_TIMESTAMP . ' NULL DEFAULT NULL',
-                'dateScheduled' => Schema::TYPE_TIMESTAMP . ' NULL DEFAULT NULL',
-                'dateExecuted' => Schema::TYPE_TIMESTAMP . ' NULL DEFAULT NULL',
-                'dateFinished' => Schema::TYPE_TIMESTAMP . ' NULL DEFAULT NULL',
+                'date_created' => Schema::TYPE_TIMESTAMP . ' NULL DEFAULT NULL',
+                'date_scheduled' => Schema::TYPE_TIMESTAMP . ' NULL DEFAULT NULL',
+                'date_executed' => Schema::TYPE_TIMESTAMP . ' NULL DEFAULT NULL',
+                'date_finished' => Schema::TYPE_TIMESTAMP . ' NULL DEFAULT NULL',
             ],
             $tableOptions
         );
@@ -30,6 +30,6 @@ class m150105_172247_create_cron_schedule_tbl extends Migration
 
     public function safeDown()
     {
-        $this->dropTable('{{%CronSchedule}}');
+        $this->dropTable('{{%cron_schedule}}');
     }
 }

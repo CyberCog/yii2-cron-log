@@ -6,16 +6,16 @@ use yii\db\ActiveRecord;
 use yii\db\Expression;
 
 /**
- * This is the model class for table "CronSchedule".
+ * This is the model class for table "cron_schedule".
  *
  * @property string $id
- * @property string $jobCode
+ * @property string $job_code
  * @property string $status
  * @property string $messages
- * @property string $dateCreated
- * @property string $dateScheduled
- * @property string $dateExecuted
- * @property string $dateFinished
+ * @property string $date_created
+ * @property string $date_scheduled
+ * @property string $date_executed
+ * @property string $date_finished
  */
 class CronScheduleModel extends ActiveRecord
 {
@@ -24,7 +24,7 @@ class CronScheduleModel extends ActiveRecord
      */
     public static function tableName()
     {
-        return 'CronSchedule';
+        return '{{%cron_schedule}}';
     }
 
     /**
@@ -34,8 +34,8 @@ class CronScheduleModel extends ActiveRecord
     {
         return [
             [['messages'], 'string'],
-            [['dateCreated', 'dateScheduled', 'dateExecuted', 'dateFinished'], 'safe'],
-            [['jobCode'], 'string', 'max' => 255],
+            [['date_created', 'date_scheduled', 'date_executed', 'date_finished'], 'safe'],
+            [['job_code'], 'string', 'max' => 255],
             [['status'], 'string', 'max' => 255]
         ];
     }
@@ -50,10 +50,10 @@ class CronScheduleModel extends ActiveRecord
             'jobCode' => Yii::t('cron', 'Job Code'),
             'status' => Yii::t('cron', 'Status'),
             'messages' => Yii::t('cron', 'Messages'),
-            'dateCreated' => Yii::t('cron', 'Date Created'),
-            'dateScheduled' => Yii::t('cron', 'Date Scheduled'),
-            'dateExecuted' => Yii::t('cron', 'Date Executed'),
-            'dateFinished' => Yii::t('cron', 'Date Finished'),
+            'date_created' => Yii::t('cron', 'Date Created'),
+            'date_scheduled' => Yii::t('cron', 'Date Scheduled'),
+            'date_executed' => Yii::t('cron', 'Date Executed'),
+            'date_finished' => Yii::t('cron', 'Date Finished'),
         ];
     }
 
@@ -74,12 +74,12 @@ class CronScheduleModel extends ActiveRecord
         if ($status === null) {
             $status = 'running';
         }
-        $this->jobCode = $jobCode;
+        $this->job_code = $jobCode;
         $this->status = $status;
         $this->messages = $messages;
 
-        $this->dateScheduled = new Expression('NOW()');
-        $this->dateExecuted = new Expression('NOW()');
+        $this->date_scheduled = new Expression('NOW()');
+        $this->date_executed = new Expression('NOW()');
         return $this->save();
     }
 
@@ -96,7 +96,7 @@ class CronScheduleModel extends ActiveRecord
     public function endCronSchedule($status, $messages = null)
     {
         if ($this->id) {
-            $this->dateFinished = new Expression('NOW()');
+            $this->date_finished = new Expression('NOW()');
             $this->status = $status;
             $this->messages = $messages;
             return $this->save();
