@@ -27,8 +27,8 @@ class m150105_172247_create_cron_schedule_tbl extends Migration
             $tableOptions
         );
 
-        $this->createIndex('IDX_CRON_SCHEDULE_JOB_CODE', '{{%CronSchedule}}', ['jobCode']);
-        $this->createIndex('IDX_CRON_SCHEDULE_SCHEDULED_AT_STATUS', '{{%CronSchedule}}', ['dateScheduled', 'status']);
+        $this->createIndex('IDX_CRON_SCHEDULE_JOB_CODE', '{{%cron_schedule}}', ['jobCode']);
+        $this->createIndex('IDX_CRON_SCHEDULE_SCHEDULED_AT_STATUS', '{{%cron_schedule}}', ['dateScheduled', 'status']);
     }
 
     public function safeDown()
